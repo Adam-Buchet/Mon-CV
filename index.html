@@ -3,115 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prénom Nom | Portfolio Professionnel</title>
-    <meta name="description" content="Page de présentation professionnelle regroupant CV et Portfolio.">
-    
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Mon Portfolio Professionnel</title>
+    <meta name="description" content="Page de présentation CV et Portfolio">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* =========================================
+           1. CONFIGURATION DES COULEURS & THEMES
+           ========================================= */
+        :root {
+            /* Couleurs extraites de votre image */
+            --col-shadow-grey: #1B1725;   /* Très sombre */
+            --col-vintage-grape: #534B62; /* Violet moyen */
+            --col-lilac-ash: #A499B3;     /* Violet clair/Gris */
+            
+            --white: #ffffff;
+            --light-bg: #f4f4f6;
+        }
+
+        /* THÈME SOMBRE (Par défaut) */
+        body.dark-mode {
+            --bg-body: var(--col-shadow-grey);
+            --bg-card: var(--col-vintage-grape);
+            --text-main: var(--col-lilac-ash);
+            --text-title: #ffffff;
+            --accent: var(--col-lilac-ash);
+            --border: rgba(164, 153, 179, 0.1);
+            --btn-bg: var(--col-vintage-grape);
+            --btn-text: #ffffff;
+        }
+
+        /* THÈME CLAIR (Inverse les rôles) */
+        body.light-mode {
+            --bg-body: #ffffff; /* Fond clair propre */
+            --bg-card: #f0f0f4; /* Carte légèrement grisée */
+            --text-main: var(--col-vintage-grape); /* Texte lisible */
+            --text-title: var(--col-shadow-grey); /* Titres foncés */
+            --accent: var(--col-vintage-grape);
+            --border: rgba(83, 75, 98, 0.2);
+            --btn-bg: var(--col-shadow-grey);
+            --btn-text: #ffffff;
+        }
+
+        /* =========================================
+           2. RESET & STYLES GLOBAUX
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* =========================================
+           3. HEADER & NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: var(--bg-body); /* Solide pour cacher le scroll */
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.4s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-title);
+        }
+
+        /* Soulignement animé */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* BOUTON SWITCH THEME */
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-title);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--bg-card);
+            transform: rotate(15deg);
+        }
+
+        /* =========================================
+           4. HERO SECTION (Présentation)
+           ========================================= */
+        .hero {
+            padding-top: 140px; /* Espace pour le header fixe */
+            padding-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            min-height: 90vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            opacity: 0;
+            animation: fadeInMove 1s ease forwards; /* Animation d'entrée */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInMove 1s ease forwards 0.3s; /* Délai pour l'image */
+        }
+
+        .image-wrapper {
+            width: 350px;
+            height: 450px;
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Filtre noir et blanc léger pour le style, retirez si non désiré */
+            filter: grayscale(20%); 
+        }
+
+        /* =========================================
+           5. SECTION CATÉGORIES (CV & Portfolio)
+           ========================================= */
+        .categories {
+            padding: 80px 0;
+            background-color: var(--bg-body);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-title);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-title);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           6. FOOTER
+           ========================================= */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* =========================================
+           7. ANIMATIONS KEYFRAMES
+           ========================================= */
+        @keyframes fadeInMove {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           8. RESPONSIVE (MOBILE)
+           ========================================= */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none; /* Menu simplifié pour mobile : on garde juste le logo et le thème */
+            }
+
+            .image-wrapper {
+                width: 100%;
+                max-width: 300px;
+                height: 380px;
+            }
+        }
+    </style>
 </head>
 
-<body data-theme="dark">
+<body class="dark-mode">
 
-    <header class="header">
-        <div class="container header-content">
-            <a href="#" class="logo">Prénom Nom.</a>
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">MonPortfolio.</a>
             
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#hero" class="nav-link active">Accueil</a></li>
-                    <li><a href="#about" class="nav-link">À Propos</a></li>
-                    <li><a href="cv.html" class="nav-link">Mon CV</a></li>
-                    <li><a href="portfolio.html" class="nav-link button-outline">Portfolio</a></li>
-                </ul>
-            </nav>
-
-            <button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">
-                <i data-lucide="sun" class="sun-icon"></i>
-                <i data-lucide="moon" class="moon-icon"></i>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section id="hero" class="hero-section fade-in">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1 class="title-large">Bonjour, je suis <span class="text-accent">Prénom Nom</span>.</h1>
-                    <h2 class="title-medium">Votre Titre Professionnel (ex: Développeur Web Fullstack)</h2>
-                    <p class="hero-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="portfolio.html" class="btn btn-primary">Voir mes projets <i data-lucide="arrow-right"></i></a>
-                        <a href="cv.html" class="btn btn-secondary">Consulter mon CV</a>
-                    </div>
-                </div>
-                <div class="hero-image-container">
-                    <img src="https://via.placeholder.com/400x500/534B62/A499B3?text=Votre+Photo" alt="Photo de Prénom Nom" class="hero-image">
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section-padding container fade-in-scroll">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-                </p>
-                <p>
-                    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.
-                </p>
-            </div>
-        </section>
-
-        <section id="categories" class="section-padding section-bg-alt">
-            <div class="container fade-in-scroll">
-                 <h2 class="section-title text-center">Explorer mon parcours</h2>
-                 <div class="grid-2">
-                     <a href="cv.html" class="card-category">
-                         <div class="card-icon">
-                             <i data-lucide="file-text"></i>
-                         </div>
-                         <h3 class="card-title">Mon Curriculum Vitae</h3>
-                         <p>Découvrez mon parcours professionnel, mes compétences et mes formations détaillées.</p>
-                         <span class="card-link">Voir le CV <i data-lucide="chevron-right"></i></span>
-                     </a>
-
-                     <a href="portfolio.html" class="card-category">
-                        <div class="card-icon">
-                            <i data-lucide="briefcase"></i>
-                        </div>
-                        <h3 class="card-title">Mon Portfolio</h3>
-                        <p>Explorez une sélection de mes meilleurs projets et réalisations concrètes.</p>
-                        <span class="card-link">Voir les projets <i data-lucide="chevron-right"></i></span>
-                    </a>
-                 </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-left">
-                <p>&copy; 2023 Prénom Nom. Tous droits réservés.</p>
-            </div>
-            <div class="footer-right">
-                <a href="#" class="social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                <a href="#" class="social-link" aria-label="GitHub"><i data-lucide="github"></i></a>
-                <a href="mailto:votre@email.com" class="social-link" aria-label="Email"><i data-lucide="mail"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
-        // Initialisation des icônes Lucide
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
