@@ -1,2 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prénom Nom - Présentation Professionnelle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-coucou
+    <header class="navbar">
+        <div class="logo">Prénom Nom</div>
+        <nav>
+            <ul>
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#cv" class="nav-link">CV</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero-section">
+        <div class="hero-content">
+            <h1 class="animated-text">Développeur & Concepteur Digital</h1>
+            <p class="subtitle">Étudiant en BUT MMI (Métiers du Multimédia et de l'Internet) à Vichy</p>
+            <p class="description">
+                **LOREM IPSUM :** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Je suis passionné par l'UX/UI, le développement front-end et la création de contenu percutant.
+            </p>
+            <a href="#cv" class="cta-button">Découvrir mon CV</a>
+        </div>
+        </section>
+
+    <section id="cv" class="content-section fade-in">
+        <h2>Mon Curriculum Vitae</h2>
+        <p class="section-intro">
+            **LOREM IPSUM :** Voici un aperçu de mon parcours académique et de mes compétences techniques. Pour une version complète, veuillez la télécharger ci-dessous.
+        </p>
+
+        <div class="cv-grid">
+            <div class="cv-card">
+                <h3>Compétences</h3>
+                <ul>
+                    <li>**Développement :** HTML, CSS, JavaScript (Bases)</li>
+                    <li>**Design :** Suite Adobe (Photoshop, Illustrator), Figma</li>
+                    <li>**Outils :** Git, WordPress, Gestion de Projet</li>
+                </ul>
+            </div>
+            <div class="cv-card">
+                <h3>Expériences / Projets</h3>
+                <p>
+                    **LOREM IPSUM :** Projet Scolaire 1 - Conception d'une application mobile fictive (BUT MMI, 2025). Développement de la charte graphique et du prototype.
+                </p>
+                <p>
+                    **LOREM IPSUM :** Stage Découverte - (2 semaines, 2024). Tâches de webmastering.
+                </p>
+            </div>
+        </div>
+        <a href="chemin/vers/mon_cv.pdf" download class="download-button">Télécharger mon CV (PDF)</a>
+    </section>
+
+    <section id="portfolio" class="content-section alternate-bg fade-in">
+        <h2>Mon Portfolio</h2>
+        <p class="section-intro">
+            **LOREM IPSUM :** Découvrez une sélection de mes meilleurs travaux réalisés durant ma formation MMI et mes projets personnels. Chaque projet est une démonstration de mes compétences en conception et en développement.
+        </p>
+
+        <div class="portfolio-grid">
+            <div class="project-card hover-lift">
+                <img src="https://via.placeholder.com/400x250?text=Projet+1" alt="Image du Projet 1">
+                <h3>Titre du Projet 1</h3>
+                <p>Brève description (UX/UI et intégration HTML/CSS).</p>
+                <a href="#">Voir le projet</a>
+            </div>
+            <div class="project-card hover-lift">
+                <img src="https://via.placeholder.com/400x250?text=Projet+2" alt="Image du Projet 2">
+                <h3>Titre du Projet 2</h3>
+                <p>Brève description (Design graphique et motion design).</p>
+                <a href="#">Voir le projet</a>
+            </div>
+            <div class="project-card hover-lift">
+                <img src="https://via.placeholder.com/400x250?text=Projet+3" alt="Image du Projet 3">
+                <h3>Titre du Projet 3</h3>
+                <p>Brève description (Développement d'un site web complet).</p>
+                <a href="#">Voir le projet</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section fade-in">
+        <h2>Me Contacter</h2>
+        <p>
+            **LOREM IPSUM :** Intéressé par mon profil ou un projet ? N'hésitez pas à me contacter par email ou via mes réseaux professionnels.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:votre.email@exemple.com" class="contact-button">votre.email@exemple.com</a>
+            <a href="https://linkedin.com/in/votreprofil" target="_blank" class="contact-button secondary">LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Prénom Nom. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Mise à jour du lien actif dans la navigation
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Animation d'apparition des sections au scroll (Intersection Observer)
+        const sections = document.querySelectorAll('.fade-in');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
