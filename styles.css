@@ -1,7 +1,7 @@
 /* --- 1. Réinitialisation et Polices --- */
 :root {
     --color-primary: #17255A; /* Bleu Principal (vif mais professionnel) */
-    --color-secondary: #2980b9; /* Bleu foncé pour les actions/hover */
+    --color-secondary: #CDD3D5; /* Bleu foncé pour les actions/hover */
     --color-dark: #2c3e50; /* Bleu très foncé/Noir (texte) */
     --color-light: #ecf0f1; /* Gris très clair (fond alterné) */
     --color-white: #ffffff; /* Blanc */
