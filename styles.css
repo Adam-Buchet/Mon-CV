@@ -3,7 +3,7 @@
     --color-primary: #034078; /* Bleu Principal (vif mais professionnel) */
     --color-secondary: #001F54; /* Bleu foncé pour les actions/hover */
     --color-dark: #0A1128; /* Bleu très foncé/Noir (texte) */
-    --color-light: #E1F1FF; /* Gris très clair (fond alterné) */
+    --color-light: #F2F2F2; /* Gris très clair (fond alterné) */
     --color-white: #FEFCFB; /* Blanc */
     --font-family: 'Roboto', sans-serif;
     --transition-duration: 0.3s;
