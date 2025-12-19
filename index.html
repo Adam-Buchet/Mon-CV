@@ -3,143 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam Buchet - Présentation Professionnelle</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>BUCHET Adam - Portfolio Étudiant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">Adam Buchet</div>
-        <nav>
-            <ul>
-                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
-                <li><a href="#cv" class="nav-link">CV</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <div class="logo">Buchet Adam</div>
+        <ul class="nav-links">
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#parcours">Parcours & CV</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">
+            <i class="fas fa-moon"></i>
+        </button>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
 
-    <section id="accueil" class="hero-section">
+    <header class="hero">
         <div class="hero-content">
-            <h1 class="animated-text">Bienvenue sur mon espace professionnel</h1>
-            <p class="subtitle">Étudiant en BUT MMI (Métiers du Multimédia et de l'Internet) à Vichy</p>
-            <p class="description">
+            <h1>Bienvenue sur mon espace <span class="highlight">professionnel</span>.</h1>
+            <p class="hero-text">
                 J'ai conçu ce site pour centraliser mes compétences, mes projets et mon parcours.
                 C'est ici que je partage mon portfolio et mon CV complet pour vous donner un aperçu concret de mon univers professionnel.
             </p>
-            <a href="#cv" class="cta-button">Découvrir mon CV</a>
-        </div>
-        </section>
-
-    <section id="cv" class="content-section fade-in">
-        <h2>Mon CV</h2>
-        <p class="section-intro">
-            **LOREM IPSUM :** Voici un aperçu de mon parcours académique et de mes compétences techniques. Pour une version complète, veuillez la télécharger ci-dessous.
-        </p>
-
-        <div class="cv-grid">
-            <div class="cv-card">
-                <h3>Compétences</h3>
-                <ul>
-                    <li>Rigueur Scientifique & Créativité Numérique   Ayant une formation en sciences (Mathématiques/Physique-Chimie) et étant actuellement étudiant en BUT MMI, j'ai développé des aptitudes techniques que je mets à profit dans mon parcours académique. Grâce à mon adaptabilité, je peux saisir les défis techniques tout en préservant une sensibilité à l'expérience utilisateur.   Que ce soit dans la préparation ou le travail pratique, je suis à l'aise avec les outils informatiques tout comme avec les tâches manuelles ; j'apprécie autant la construction que la réparation.</li>
-                    <li>**Design :** Suite Adobe (Photoshop, Illustrator), Figma</li>
-                    <li>**Outils :** Git, WordPress, Gestion de Projet</li>
-                </ul>
-            </div>
-            <div class="cv-card">
-                <h3>Expériences / Projets</h3>
-                <p>
-                    **LOREM IPSUM :** Projet Scolaire 1 - Conception d'une application mobile fictive (BUT MMI, 2025). Développement de la charte graphique et du prototype.
-                </p>
-                <p>
-                    **LOREM IPSUM :** Stage Découverte - (2 semaines, 2024). Tâches de webmastering.
-                </p>
+            <div class="hero-btns">
+                <a href="#parcours" class="btn btn-outline">Voir mon parcours</a>
+                <a href="#contact" class="btn btn-primary">Me contacter</a>
             </div>
         </div>
-        <a href="chemin/vers/mon_cv.pdf" download class="download-button">Télécharger mon CV (PDF)</a>
-    </section>
+    </header>
 
-    <section id="portfolio" class="content-section alternate-bg fade-in">
-        <h2>Mon Portfolio</h2>
-        <p class="section-intro">
-            **LOREM IPSUM :** Découvrez une sélection de mes meilleurs travaux réalisés durant ma formation MMI et mes projets personnels. Chaque projet est une démonstration de mes compétences en conception et en développement.
-        </p>
-
-        <div class="portfolio-grid">
-            <div class="project-card hover-lift">
-                <img src="https://via.placeholder.com/400x250?text=Projet+1" alt="Image du Projet 1">
-                <h3>Titre du Projet 1</h3>
-                <p>Brève description (UX/UI et intégration HTML/CSS).</p>
-                <a href="#">Voir le projet</a>
-            </div>
-            <div class="project-card hover-lift">
-                <img src="https://via.placeholder.com/400x250?text=Projet+2" alt="Image du Projet 2">
-                <h3>Titre du Projet 2</h3>
-                <p>Brève description (Design graphique et motion design).</p>
-                <a href="#">Voir le projet</a>
-            </div>
-            <div class="project-card hover-lift">
-                <img src="https://via.placeholder.com/400x250?text=Projet+3" alt="Image du Projet 3">
-                <h3>Titre du Projet 3</h3>
-                <p>Brève description (Développement d'un site web complet).</p>
-                <a href="#">Voir le projet</a>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        J'ai constamment des ambitions dans différents domaines de prédilection. Ainsi, je m'efforce toujours de pousser mes motivations, d'avoir des outils nécessaires pour réussir, d’apprendre et de me développer.
+                        Bien que je sois toujours en phase de développement, chaque choix que je fais est une tentative de voir au-delà, cherchant une certaine liberté dans mes décisions et pour moi-même.
+                        Donc, je privilégie toujours de m'écouter pour progresser plutôt que d'écouter les autres, car je suis le seul à pouvoir donner un jugement sur mes choix et mes décisions.
+                    </p>
+                    <br>
+                    <p>
+                        Bien que mon parcours actuel en BUT MMI m'ait permis de développer une grande rigueur et une maîtrise des outils numériques, ma volonté de revenir vers les sciences fondamentales est restée intacte.
+                        Titulaire d'un baccalauréat avec mention Assez Bien et possédant de bonnes aptitudes en Mathématiques et en Physique-Chimie, je dispose de la rigueur nécessaire pour exceller dans un parcours universitaire exigeant.
+                        Mon assiduité d'études démontre ma capacité de travail et mon engagement à réussir.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>Rigueur</h3>
+                        <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Motivation</h3>
+                        <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <h3>...</h3>
+                        <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="content-section fade-in">
-        <h2>Me Contacter</h2>
-        <p>
-            **LOREM IPSUM :** Intéressé par mon profil ou un projet ? N'hésitez pas à me contacter par email ou via mes réseaux professionnels.
-        </p>
-        <div class="contact-links">
-            <a href="mailto:votre.email@exemple.com" class="contact-button">votre.email@exemple.com</a>
-            <a href="https://linkedin.com/in/votreprofil" target="_blank" class="contact-button secondary">LinkedIn</a>
+    <section id="parcours" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Mon Parcours</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025 - 2026</div>
+                    <div class="timeline-content">
+                        <h3>BUT Métiers du Multimédia et de l'Internet</h3>
+                        <h4>IUT d'Allier, Vichy</h4>
+                        <p>Développement web, communication, graphisme. [Mentionne ta moyenne si elle est avantageuse.]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2022 - 2025</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Général</h3>
+                        <h4>Boen-sur-Lignon</h4>
+                        <p>Spécialités Mathématiques et Physique-Chimie.<br>Option Sport.<br>
+                        Mention : <strong>Assez Bien</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018 - 2022</div>
+                    <div class="timeline-content">
+                        <h3>Diplôme national du brevet</h3>
+                        <h4>Saint-Germain-Laval</h4>
+                        Mention : <strong>Très bien</strong>.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="cv-download">
+                <a href="[ Lien vers ton PDF ]" class="btn btn-primary" download><i class="fas fa-download"></i> Télécharger mon CV complet</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Projets & Réalisations</h2>
+            <div class="portfolio-grid">
+                
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>[ Titre du Projet 1 ]</h3>
+                        <p>[ Courte description. Ex: Site web réalisé en MMI pour une association... ]</p>
+                        <span class="tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>[ Titre du Projet 2 ]</h3>
+                        <p>[ Courte description. Ex: Projet TPE ou Grand Oral sur un sujet scientifique... ]</p>
+                        <span class="tag">Recherche</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>[ Titre du Projet 3 ]</h3>
+                        <p>[ Courte description. Ex: Engagement associatif ou sportif... ]</p>
+                        <span class="tag">Sport/Asso</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Me contacter</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Adam.BUCHET@etu.uca.fr</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vichy, France</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-linkedin"></i>
+                        <p>[ Lien vers ton LinkedIn ]</p>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Prénom Nom. Tous droits réservés.</p>
+        <p>&copy; 2025 BUCHET Adam. Tous droits réservés.</p>
     </footer>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                // Mise à jour du lien actif dans la navigation
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-
-        // Animation d'apparition des sections au scroll (Intersection Observer)
-        const sections = document.querySelectorAll('.fade-in');
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
